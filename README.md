@@ -1,5 +1,7 @@
 # Clinical AI Proving Ground
 
+**Try it in your browser, no installation:** [huggingface.co/spaces/masaghiri/clinical-ai-proving-ground](https://huggingface.co/spaces/masaghiri/clinical-ai-proving-ground)
+
 A small, dependable toolkit and protocol for one question: **does this AI tool actually work, compared with a reference standard?**
 
 It grew out of a rule I have followed since my first neural network in 2010–2011: no AI result without a reference standard. That network, trained on features extracted from radiographs, located the minor apical foramen correctly in 93% of test samples ([Int Endod J 2012](https://doi.org/10.1111/j.1365-2591.2011.01970.x)); tested in human cadavers against stereomicroscopy, it was right for 96% of teeth, compared with 76% for experienced endodontists ([J Endod 2012](https://doi.org/10.1016/j.joen.2012.05.004)).
