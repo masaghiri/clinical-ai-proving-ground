@@ -8,8 +8,10 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Hashable, Sequence
 
+import math
+from statistics import NormalDist
+
 import numpy as np
-from scipy.stats import binomtest, norm
 
 
 @dataclass(frozen=True)
@@ -35,12 +37,15 @@ def wilson(k: int, n: int, confidence: float = 0.95) -> Proportion:
         raise ValueError(f"need 0 <= k <= n, got k={k}, n={n}")
     if n == 0:
         return Proportion(k, n, float("nan"), float("nan"), float("nan"))
-    z = norm.ppf(1 - (1 - confidence) / 2)
+    z = NormalDist().inv_cdf(1 - (1 - confidence) / 2)
     p = k / n
     denom = 1 + z**2 / n
     centre = (p + z**2 / (2 * n)) / denom
-    half = z * np.sqrt(p * (1 - p) / n + z**2 / (4 * n**2)) / denom
-    return Proportion(k, n, p, max(0.0, centre - half), min(1.0, centre + half))
+    half = z * math.sqrt(p * (1 - p) / n + z**2 / (4 * n**2)) / denom
+    # clamp so floating-point noise never puts a bound on the wrong side of the estimate
+    low = min(p, max(0.0, centre - half))
+    high = max(p, min(1.0, centre + half))
+    return Proportion(k, n, p, low, high)
 
 
 def _check_pair(a: Sequence, b: Sequence) -> None:
@@ -120,8 +125,16 @@ def mcnemar_exact(reference: Sequence[Hashable], rater_a: Sequence[Hashable],
     only_a = sum(x and not y for x, y in zip(a_ok, b_ok))
     only_b = sum(y and not x for x, y in zip(a_ok, b_ok))
     discordant = only_a + only_b
-    p = 1.0 if discordant == 0 else binomtest(only_a, discordant, 0.5).pvalue
-    return PairedComparison(only_a, only_b, float(p))
+    return PairedComparison(only_a, only_b, _exact_binomial_two_sided(only_a, discordant))
+
+
+def _exact_binomial_two_sided(k: int, n: int) -> float:
+    """Two-sided exact binomial test against p = 0.5 (the exact McNemar test). No SciPy needed."""
+    if n == 0:
+        return 1.0
+    tail = min(k, n - k)
+    cdf = sum(math.comb(n, i) for i in range(tail + 1)) / 2**n
+    return float(min(1.0, 2 * cdf))
 
 
 def brier_score(outcome: Sequence[int], probability: Sequence[float]) -> float:

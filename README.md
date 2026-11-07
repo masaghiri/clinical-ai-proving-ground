@@ -19,7 +19,7 @@ The Proving Ground is designed for teaching as much as for research: a master's 
 ## Quick start
 
 ```bash
-pip install numpy scipy
+pip install numpy
 git clone https://github.com/masaghiri/clinical-ai-proving-ground
 cd clinical-ai-proving-ground
 python examples/reanalysis_cadaver_2012.py
