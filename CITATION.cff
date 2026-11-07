@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Clinical AI Proving Ground: testing AI tools against a reference standard"
+version: 0.1.0
+date-released: 2026-11-06
+license: MIT
+repository-code: "https://github.com/masaghiri/clinical-ai-proving-ground"
+authors:
+  - family-names: Saghiri
+    given-names: "M. Ali"
+    orcid: "https://orcid.org/0000-0002-5064-7828"
+references:
+  - type: article
+    title: "A new approach for locating the minor apical foramen using an artificial neural network"
+    authors:
+      - family-names: Saghiri
+        given-names: "M. A."
+    journal: "International Endodontic Journal"
+    year: 2012
+    volume: 45
+    issue: 3
+    start: 257
+    end: 265
+    doi: "10.1111/j.1365-2591.2011.01970.x"
+  - type: article
+    title: "The reliability of artificial neural network in locating minor apical foramen: a cadaver study"
+    authors:
+      - family-names: Saghiri
+        given-names: "M. A."
+    journal: "Journal of Endodontics"
+    year: 2012
+    volume: 38
+    issue: 8
+    start: 1130
+    end: 1134
+    doi: "10.1016/j.joen.2012.05.004"
