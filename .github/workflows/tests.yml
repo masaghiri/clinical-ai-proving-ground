@@ -14,3 +14,4 @@ jobs:
       - run: pip install numpy pytest
       - run: python -m pytest -q
       - run: python examples/reanalysis_cadaver_2012.py
+      - run: python examples/dyad_and_drift_demo.py

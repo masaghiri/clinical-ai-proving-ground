@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clinical-ai-proving-ground"
-version = "0.1.1"
-description = "Test an AI tool against a reference standard: Wilson intervals, paired comparison, calibration and a written report."
+version = "0.2.0"
+description = "Test an AI tool against a reference standard: Wilson intervals, paired comparison, calibration, clinician-AI dyad studies, drift and site checks, and a written report."
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "M. Ali Saghiri" }]

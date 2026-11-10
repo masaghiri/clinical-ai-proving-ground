@@ -26,6 +26,15 @@ Use one copy per tool. Commit it to your project before the first case is collec
 - Secondary outcomes (sensitivity, specificity, agreement, calibration, time per case):
 - Paired comparison with the comparator (exact McNemar test):
 
+## 5a. If clinicians will use the tool (dyad design)
+- Will each case be read by the clinician alone first, then with the AI output in view (or by separate clinicians)?
+- Pre-specify the reliance outcomes: accepted wrong AI advice, harmful switches, beneficial switches, overrides of a correct AI.
+- Will some AI outputs be deliberately wrong (planted errors) to measure automation bias? How will participants be debriefed?
+
+## 5b. After deployment
+- Minimum acceptable accuracy, fixed now: ____ ; minimum cases per review period: ____ ; review period: ____
+- Who acts when a period or site is flagged "re-qualify", and what happens to the tool in the meantime?
+
 ## 6. Failure review
 - Every error will be listed and reviewed. For each: what went wrong, would a clinician have caught it, could it harm a patient?
 
